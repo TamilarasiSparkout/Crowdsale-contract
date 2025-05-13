@@ -1,13 +1,17 @@
-# Sample Hardhat Project
+# Implementing CrowdSale contract
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+Have created contracts to mint NWT tokens, USDT stablecoins and Crowdsale contract which is to exchange our NWT tokens with users USDT stablecoins.
 
-Try running some of the following tasks:
+## 🔧 Features in CrowdSale contract
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
-```
+- buyTokens
+- Can change rate ( no.of.NWTtokens per USDT) 
+- Withdraw USDT Stablecoins by owner
+- Withdraw Unsold NWTtokens by owner
+
+## Installation
+
+npm install "@nomicfoundation/hardhat-toolbox"
+npm install "@nomicfoundation/hardhat-verify"
+npm install "dotenv"
+npm install "@openzeppelin/contracts"
