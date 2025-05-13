@@ -1,27 +1,27 @@
-const hre = require("hardhat");
-const { ethers } = require("ethers");
+const { ethers } = require("hardhat");
 
 async function main() {
-    const [deployer] = await hre.ethers.getSigners();
-    console.log("Deploying contracts with:", deployer.address);
-
-    const initialSupply = ethers.parseUnits("1000000", 18); // 1 million tokens
-
-    const Token = await hre.ethers.getContractFactory("NewToken");
-    const token = await Token.deploy(initialSupply);
-    await token.waitForDeployment();
-    const tokenAddress = await token.getAddress();
-
-    console.log("Token deployed to:", tokenAddress);
+    //const [deployer] = await ethers.getSigners();
+    //console.log("Deploying contracts with:", deployer.address);
+    //const NewToken = await ethers.getContractFactory("NewToken");
+    //const newToken = await NewToken.deploy();
+    //const newTokenAddress = await newToken.getAddress();
+    //console.log("Token deployed to:", newTokenAddress);
 
     const rate = 1000;
-    constructorArguments: [1000, "0xEeC9656Ad56C0337A72bCA5E64b968fcf37a4c1"]
+    const tokenAddress = "0x4Ee0d30752829DD207E4EfFe6116DDda75EE40A5";
+    const USDTtokenAddress = "0x4D630A55BbC0c2a923FD85782e709e4d3C4E3e70";
+    const Crowdsale = await ethers.getContractFactory("newCrowdSale");
+    const crowdsale = await Crowdsale.deploy(rate, tokenAddress, USDTtokenAddress);
+    const crowdsaleAddress = await crowdsale.getAddress();
+    console.log("CrowdsaleAddress deployed to:", crowdsaleAddress);
 
-    const Crowdsale = await hre.ethers.getContractFactory("newCrowdSale");
-    const crowdsale = await Crowdsale.deploy(rate, tokenAddress);
-    await crowdsale.waitForDeployment();
-    console.log("Crowdsale deployed to:", crowdsale.target);
-
+    //const [deployer] = await ethers.getSigners();
+    //console.log("Deploying USDT tokens with:", deployer.address);
+    //const USDTStablecoin = await ethers.getContractFactory("USDTStablecoin");
+    //const USDTstablecoin = await USDTStablecoin.deploy();
+    //const USDTtokenAddress = await USDTstablecoin.getAddress();
+    //console.log("USDT tokens deployed to:", USDTtokenAddress);
 }
 
 main().catch((error) => {
